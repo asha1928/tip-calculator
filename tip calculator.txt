@@ -1,0 +1,43 @@
+BEGIN
+    PRINT "Enter the bill amount:"
+    INPUT billAmount
+
+    IF billAmount <= 0 THEN
+        PRINT "Error: Bill amount must be a positive number."
+        EXIT
+    ENDIF
+
+    PRINT "Enter service quality (poor, fair, good, excellent):"
+    INPUT serviceQuality
+
+    IF serviceQuality = "poor" THEN
+        tipPercentage ← 0.10
+    ELSE IF serviceQuality = "fair" THEN
+        tipPercentage ← 0.15
+    ELSE IF serviceQuality = "good" THEN
+        tipPercentage ← 0.18
+    ELSE IF serviceQuality = "excellent" THEN
+        tipPercentage ← 0.20
+    ELSE
+        PRINT "Error: Invalid service quality."
+        EXIT
+    ENDIF
+
+    PRINT "Enter the number of people splitting the bill:"
+    INPUT numPeople
+
+    IF numPeople <= 0 THEN
+        PRINT "Error: Number of people must be a positive integer."
+        EXIT
+    ENDIF
+    tipAmount ← billAmount * tipPercentage
+    totalAmount ← billAmount + tipAmount
+    amountPerPerson ← totalAmount / numPeople
+
+    PRINT "Bill amount:", billAmount
+    PRINT "Service quality:", serviceQuality, "(", tipPercentage * 100, "%)"
+    PRINT "Tip amount:", tipAmount
+    PRINT "Total amount:", totalAmount
+    PRINT "Number of people:", numPeople
+    PRINT "Amount per person:", amountPerPerson
+END
